@@ -11,7 +11,46 @@
 - Let us start getting our hands dirty by looking at few configurations before actual library implementation.
 
 ### Configurations Needed:
-- You need to do the following configurations in the build.gradle file.
+-  You need to do the following configurations in the build.gradle file.
+   [![](https://jitpack.io/v/JamperCin/inventoryApi.svg)](https://jitpack.io/#JamperCin/inventoryApi)
+
+```
+Add it in your root build.gradle at the end of repositories:
+
+	allprojects {
+		repositories {
+			...
+			maven { url 'https://jitpack.io' }
+		}
+	}
+```
+
+```
+Add the dependency
+
+	dependencies {
+	        implementation 'com.github.JamperCin:inventoryApi:1.0.0'
+}
+```
+- Another way to configure is to build the AAR/JAR file from this module and use the JAR or AAR file in your project as a dependency.
+
+- If you face below error compiling your code
+
+```
+More than one file was found with OS independent path 'META-INF/com.android.tools/proguard/coroutines.pro'
+```
+
+please put the following in your build.gradle file as a temporary workaround while Google fix the issue :
+```
+ android {
+     packagingOptions {
+         exclude 'META-INF/com.android.tools/proguard/coroutines.pro'
+     }
+ }
+ ```
+
+- Do not forget to add your ```INTERNET permission``` to your manifest file.
+
 
 ### Implementation Of Library:
 - Now that we are done with the configurations, let us go straight into library usage.
